@@ -11,6 +11,7 @@ const Gameboard = () => {
         const y = event.clientY - bounds.top
 
         setSelectionCoords([x, y])
+        console.log(x, y)
     }
     return (
         <div 

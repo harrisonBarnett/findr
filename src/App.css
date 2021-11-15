@@ -2,9 +2,6 @@ html, body {
     padding: 0;
     margin: 0;
 }
-.App {
-    margin-left: 50px;
-}
 #gameboard {
     height: 250px;
     width: 250px;
@@ -15,6 +12,7 @@ html, body {
     position: absolute;
     height: 50px;
     width: 50px;
+    transform: translate(-25px, -25px);
     border-radius: 50%;
     border: 1px solid red;
 }

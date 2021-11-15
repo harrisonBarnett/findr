@@ -11,3 +11,10 @@ html, body {
 
     border: 1px solid black;
 }
+#selection-window {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid red;
+}

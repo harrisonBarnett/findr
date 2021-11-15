@@ -1,11 +1,16 @@
 import './App.css'
 
-import Gameboard from './Gameboard'
+import Gameboard from './components/Gameboard'
+import StartPrompt from './components/StartPrompt'
 
 const App = ()=> {
+
   return (
     <div className='App'>
-      <Gameboard />
+      <StartPrompt />
+      <div id='play-area'>
+        <Gameboard />
+      </div>
     </div>
   )
 }

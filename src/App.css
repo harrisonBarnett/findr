@@ -2,11 +2,40 @@ html, body {
     padding: 0;
     margin: 0;
 }
+* h1,
+* h2,
+* h3,
+* p,
+* ul,
+* li,
+* a {
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+/* HEADER */
+#header {
+    height: 10vh;
+}
+/* START PROMPT */
+#start-prompt {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,.5);
+}
+#start-prompt-window {
+    background: white;
+}
+/* GAMEBOARD */
 #gameboard {
-    height: 250px;
-    width: 250px;
-
-    border: 1px solid black;
+    position: relative;
 }
 #selection-window {
     position: absolute;
@@ -14,5 +43,14 @@ html, body {
     width: 50px;
     transform: translate(-25px, -25px);
     border-radius: 50%;
+    pointer-events: none;
+    overflow:unset;
     border: 1px solid red;
+}
+#character-dropdown {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+
+    background: rgba(255, 255, 255, .5);
 }

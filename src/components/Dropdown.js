@@ -5,6 +5,7 @@ const DropDown = props => {
         <div 
         id='character-dropdown'
         style={{
+            display: props.display,
             left: props.offsetX,
             top: props.offsetY
         }}>

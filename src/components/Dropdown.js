@@ -5,9 +5,18 @@ const DropDown = props => {
         <div 
         id='character-dropdown'
         style={{
-            left: props.offset
+            left: props.offsetX,
+            top: props.offsetY
         }}>
-            <p>i'm the dropdown</p>
+            <p>coordinates: {props.coords[0] + ', ' + props.coords[1]}</p>
+            <ul>
+                {props.characters.map(character => {
+                    return <li
+                            onClick={()=> {props.checkCharacter(character.name)}}>
+                                {character.name}
+                            </li>
+                })}
+            </ul>
         </div>
     );
 };

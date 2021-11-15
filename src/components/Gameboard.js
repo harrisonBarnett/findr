@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import charsLevel1 from '../charsLevel1'
 import SelectionWindow from './SelectionWindow'
 
 import Image from '../static/images/futurama.png'
@@ -14,12 +15,19 @@ const Gameboard = () => {
 
         setSelectionCoords([x, y])
     }
+
+    function checkCharacter(name) {
+        alert(name)
+    }
     return (
         <div 
         id='gameboard'
         onClick={handleGameboardClick}>
             <img src={Image}></img>
-            <SelectionWindow coords={selectionCoords}/>
+            <SelectionWindow 
+            coords={selectionCoords}
+            characters={charsLevel1}
+            checkCharacter={checkCharacter}/>
         </div>
     );
 };

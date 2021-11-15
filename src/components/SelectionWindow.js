@@ -11,7 +11,11 @@ const SelectionWindow = props => {
                 display: props.coords.length === 0 ? 'none' : 'block'
             }}> 
             <Dropdown 
-            offset={props.coords[0] >= 800 ? '-200%' : '100%'}/>    
+            characters={props.characters}
+            checkCharacter={props.checkCharacter}
+            coords={props.coords}
+            offsetX={props.coords[0] >= 800 ? '-200%' : '100%'}
+            offsetY={props.coords[1] >= 350 ? '-200%' : '100%'}/>    
         </div>
     );
 };

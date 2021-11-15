@@ -49,8 +49,10 @@ html, body {
 }
 #character-dropdown {
     position: absolute;
-    height: 100px;
+    z-index: 3;
+    pointer-events: initial;
     width: 100px;
 
     background: rgba(255, 255, 255, .5);
+    border: 1px solid black;
 }

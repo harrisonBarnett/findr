@@ -10,6 +10,7 @@ import './App.css'
 
 const App = ()=> {
   const [selectionCoords, setSelectionCoords] = useState([])
+  const [characters, setCharacters] = useState([charsLevel1])
 
   const handleGameboardClick = (event) => {
     const parent = document.querySelector('#play-area')
@@ -33,7 +34,7 @@ const App = ()=> {
         checkCharacter={checkCharacter}
         selectionCoords={selectionCoords}/>
         <Dropdown 
-            characters={charsLevel1}
+            characters={characters}
             checkCharacter={checkCharacter}
             coords={selectionCoords}
             display={selectionCoords.length === 0 ? 'none' : 'block'}

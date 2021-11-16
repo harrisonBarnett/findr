@@ -10,7 +10,7 @@ import './App.css'
 
 const App = ()=> {
   const [selectionCoords, setSelectionCoords] = useState([])
-  const [characters, setCharacters] = useState([charsLevel1])
+  const [characters, setCharacters] = useState(charsLevel1)
 
   const handleGameboardClick = (event) => {
     const parent = document.querySelector('#play-area')
@@ -22,8 +22,14 @@ const App = ()=> {
   }
 
   function checkCharacter(name) {
-    alert(`clicked ${name}`)
-    setSelectionCoords([])
+    const toCheck = characters.filter(character => character.name === name)[0]
+    if(
+      (selectionCoords[0] >= toCheck.rangeX[0] && selectionCoords[0] <= toCheck.rangeX[1]) &&
+      (selectionCoords[1] >= toCheck.rangeY[0] && selectionCoords[1] <= toCheck.rangeY[1])){
+        alert('got em!')
+      } else {
+        alert('nope')
+      }
 }
   return (
     <div className='App'>

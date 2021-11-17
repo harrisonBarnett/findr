@@ -11,6 +11,7 @@ import './App.css'
 const App = ()=> {
   const [selectionCoords, setSelectionCoords] = useState([])
   const [characters, setCharacters] = useState(charsLevel1)
+  const [foundCounter, setFoundCounter] = useState(0)
 
   const handleGameboardClick = (event) => {
     const parent = document.querySelector('#play-area')
@@ -26,9 +27,14 @@ const App = ()=> {
     if(
       (selectionCoords[0] >= toCheck.rangeX[0] && selectionCoords[0] <= toCheck.rangeX[1]) &&
       (selectionCoords[1] >= toCheck.rangeY[0] && selectionCoords[1] <= toCheck.rangeY[1])){
-        alert('got em!')
+        const tempCharacters = characters.filter(character => character.name !== name)
+        toCheck.found = true
+        tempCharacters.push(toCheck)
+        setCharacters(tempCharacters)
+        setSelectionCoords([])
       } else {
         alert('nope')
+        setSelectionCoords([])
       }
 }
   return (
@@ -38,7 +44,8 @@ const App = ()=> {
         <Gameboard 
         handleGameboardClick={handleGameboardClick}
         checkCharacter={checkCharacter}
-        selectionCoords={selectionCoords}/>
+        selectionCoords={selectionCoords}
+        characters={characters}/>
         <Dropdown 
             characters={characters}
             checkCharacter={checkCharacter}

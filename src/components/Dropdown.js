@@ -13,6 +13,7 @@ const DropDown = props => {
             <ul>
                 {props.characters.map(character => {
                     return <li
+                            style={{background: character.found ? 'gray' : 'white'}}
                             onClick={()=> {props.checkCharacter(character.name)}}>
                                 {character.name}
                             </li>

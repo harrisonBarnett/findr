@@ -56,3 +56,10 @@ html, body {
     background: rgba(255, 255, 255, .5);
     border: 1px solid black;
 }
+#scorebox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    background: white;
+}

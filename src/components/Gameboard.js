@@ -1,5 +1,6 @@
 import React from 'react';
 import SelectionWindow from './SelectionWindow'
+import Scorebox from './Scorebox'
 
 import Image from '../static/images/futurama.png'
 
@@ -13,6 +14,8 @@ const Gameboard = props => {
             coords={props.selectionCoords}
             characters={props.characters}
             checkCharacter={props.checkCharacter}/>
+            <Scorebox
+            characters={props.characters} />
         </div>
     );
 };

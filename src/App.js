@@ -24,6 +24,12 @@ const App = ()=> {
 
   function checkCharacter(name) {
     const toCheck = characters.filter(character => character.name === name)[0]
+    if(toCheck.found) {
+      alert('you already found this one, dummy!')
+      setSelectionCoords([])
+      return
+    }
+
     if(
       (selectionCoords[0] >= toCheck.rangeX[0] && selectionCoords[0] <= toCheck.rangeX[1]) &&
       (selectionCoords[1] >= toCheck.rangeY[0] && selectionCoords[1] <= toCheck.rangeY[1])){
@@ -32,6 +38,7 @@ const App = ()=> {
         tempCharacters.push(toCheck)
         setCharacters(tempCharacters)
         setSelectionCoords([])
+        setFoundCounter(foundCounter + 1)
       } else {
         alert('nope')
         setSelectionCoords([])
@@ -45,7 +52,8 @@ const App = ()=> {
         handleGameboardClick={handleGameboardClick}
         checkCharacter={checkCharacter}
         selectionCoords={selectionCoords}
-        characters={characters}/>
+        characters={characters}
+        foundCounter={foundCounter}/>
         <Dropdown 
             characters={characters}
             checkCharacter={checkCharacter}

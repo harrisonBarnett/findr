@@ -15,7 +15,8 @@ const Gameboard = props => {
             characters={props.characters}
             checkCharacter={props.checkCharacter}/>
             <Scorebox
-            characters={props.characters} />
+            characters={props.characters}
+            foundCounter={props.foundCounter} />
         </div>
     );
 };

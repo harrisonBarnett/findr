@@ -9,6 +9,7 @@ import charsLevel1 from './charsLevel1'
 import './App.css'
 
 const App = ()=> {
+  const [gameStart, setGameStart] = useState(false)
   const [selectionCoords, setSelectionCoords] = useState([])
   const [characters, setCharacters] = useState(charsLevel1)
   const [foundCounter, setFoundCounter] = useState(0)

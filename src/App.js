@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Gameboard from './components/Gameboard'
 import Dropdown from './components/Dropdown'
 import StartPrompt from './components/StartPrompt'
@@ -41,10 +41,21 @@ const App = ()=> {
         setSelectionCoords([])
         setFoundCounter(foundCounter + 1)
       } else {
-        alert('nope')
         setSelectionCoords([])
       }
-}
+  }
+  function checkWin() {
+    if(foundCounter === 5) {
+      alert('you won, good job')
+      setSelectionCoords([])
+      setCharacters(charsLevel1)
+      setFoundCounter(0)
+    }
+  }
+  useEffect(() => {
+    checkWin()
+  }, [characters])
+
   return (
     <div className='App'>
       <StartPrompt />

@@ -9,6 +9,7 @@ const End = props => {
     return (
         <StyledContainer id='end-prompt'>
             <h2>this is the end prompt</h2>
+            <h3>time elapsed: {props.timeElapsed}</h3>
             <button onClick={props.resetGame}>reset</button>
             <Leaderboard />
         </StyledContainer>

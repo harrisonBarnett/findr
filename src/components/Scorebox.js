@@ -15,6 +15,7 @@ const Scorebox = props => {
         id='scorebox'
         style={{display: props.show}}>
             <p>{props.foundCounter}</p>
+            <p>time: {props.timer}</p>
             <Timer timer={props.timer}/>
             <ul id='character-list'>
                 {props.characters.map(character => {

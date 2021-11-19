@@ -15,6 +15,7 @@ const Prompt = props => {
             startGame={props.startGame}
             gameState={props.gameState}/>
             <End
+            timeElapsed={props.timeElapsed}
             resetGame={props.resetGame} 
             gameState={props.gameState}/>
         </StyledContainer>

@@ -1,17 +1,21 @@
 import React from 'react'
+import Timer from './Timer'
 import styled from 'styled-components'
 
+const StyledContainer = styled.div`
+position: fixed;
+top: 0;
+left: 0;
+background: white;
+`
+
 const Scorebox = props => {
-    const StyledContainer = styled.div`
-        display: ${props.show};
-        position: fixed;
-        top: 0;
-        left: 0;
-        background: white;
-    `
     return (
-        <StyledContainer id='scorebox'>
+        <StyledContainer 
+        id='scorebox'
+        style={{display: props.show}}>
             <p>{props.foundCounter}</p>
+            <Timer timer={props.timer}/>
             <ul id='character-list'>
                 {props.characters.map(character => {
                     return <li 

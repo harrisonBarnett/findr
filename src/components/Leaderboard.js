@@ -1,9 +1,11 @@
 import React from 'react';
+
 import styled from 'styled-components'
+const StyledContainer = styled.div`
+background: red;
+`
+
 const Leaderboard = () => {
-    const StyledContainer = styled.div`
-        background: red;
-    `
     return (
         <StyledContainer>
             <h1>this is the leaderboard</h1>

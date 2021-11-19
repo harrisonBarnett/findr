@@ -13,6 +13,7 @@ const App = ()=> {
   const [selectionCoords, setSelectionCoords] = useState([])
   const [characters, setCharacters] = useState(charsLevel1)
   const [foundCounter, setFoundCounter] = useState(0)
+  const [timer, setTimer] = useState(0)
   const [timerStart, setTimerStart] = useState('')
   const [timerEnd, setTimerEnd] = useState('')
 
@@ -56,6 +57,7 @@ const App = ()=> {
     if(foundCounter === 5) {
       alert('you won, good job')
       setTimerEnd(Date.now())
+      setTimer(0)
       setGameState('end')
     }
   }
@@ -64,13 +66,20 @@ const App = ()=> {
     characters.forEach(character => {
       character.found = false
     })
+    setCharacters(characters)
     setSelectionCoords([])
     setFoundCounter(0)
     setGameState('start')
   }
+  // updating timer, checking win condition
   useEffect(() => {
+    if(gameState === 'end') {
+      return
+    }
+    let interval = setInterval(() => setTimer(timer + 1), 1000)
     checkWin()
-  }, [characters])
+    return() => clearInterval(interval)
+  }, [characters, timer, gameState])
 
   return (
     <div className='App'>
@@ -87,6 +96,7 @@ const App = ()=> {
           coords={selectionCoords}
           display={selectionCoords.length === 0 ? 'none' : 'block'}/>
       <Scorebox 
+      timer={timer}
       show={gameState === 'play' ? 'block' : 'none'}
       characters={characters}
       foundCounter={foundCounter}/>

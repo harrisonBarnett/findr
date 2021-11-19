@@ -5,17 +5,17 @@ import Scorebox from './Scorebox'
 
 import styled from 'styled-components'
 import Image from '../static/images/futurama.png'
+const StyledContainer = styled.div`
+position: relative;
+width: fit-content;
+height: fit-content;
+`
 
 const Gameboard = props => {
-    const StyledContainer = styled.div`
-    display: ${props.show};
-    position: relative;
-    width: fit-content;
-    height: fit-content;
-`
     return (
         <StyledContainer 
         id='gameboard'
+        style={{ display:props.show }}
         onClick={props.handleGameboardClick}>
             <img src={Image} alt='collage of Futurama characters'></img>
             <SelectionWindow 

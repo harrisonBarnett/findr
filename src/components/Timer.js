@@ -1,10 +1,13 @@
 import React from 'react';
-
+import styled from 'styled-components'
+const StyledContainer = styled.div`
+`
 const Timer = props => {
     return (
-        <div id='timer'>
-            <p>{props.timer}</p>
-        </div>
+        <StyledContainer 
+        className='timer'>
+            <p id='timer' key={props.timer}>{props.timer}</p>
+        </StyledContainer>
     );
 };
 

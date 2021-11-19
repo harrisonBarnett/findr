@@ -3,13 +3,14 @@ import Start from './Start'
 import End from './End'
 
 import styled from 'styled-components';
+const StyledContainer = styled.div`
 
+`
 const Prompt = props => {
-    const StyledContainer = styled.div`
-        display: ${props.show};
-    `
     return (
-        <StyledContainer id='prompt-screen'>
+        <StyledContainer 
+        id='prompt-screen'
+        style={{ display: props.show }}>
             <h1>this is the prompt screen</h1>
             <Start 
             startGame={props.startGame}

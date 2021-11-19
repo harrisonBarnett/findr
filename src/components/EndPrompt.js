@@ -7,9 +7,10 @@ import React from 'react';
 
 import Leaderboard from './Leaderboard';
 
-const EndPrompt = () => {
+const EndPrompt = props => {
     return (
-        <div>
+        <div
+        style={{ display: props.show }}>
             <Leaderboard />
         </div>
     );

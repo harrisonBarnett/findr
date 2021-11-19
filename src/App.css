@@ -14,25 +14,16 @@ html, body {
     padding: 0;
     margin: 0;
 }
-/* HEADER */
-#header {
-    height: 10vh;
-}
 /* START PROMPT */
 #start-prompt {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,.5);
+    height: 200px;
+    width: 200px;
+    top: 50%;
+    left: 50%;
+
 }
-#start-prompt-window {
-    background: white;
-}
+
 /* GAMEBOARD */
 #gameboard {
     position: relative;

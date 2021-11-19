@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Gameboard from './components/Gameboard'
 import Dropdown from './components/Dropdown'
 import StartPrompt from './components/StartPrompt'
+import EndPrompt from './components/EndPrompt'
 
 import charsLevel1 from './charsLevel1'
 
@@ -21,6 +22,10 @@ const App = ()=> {
     const y = event.clientY - bounds.top
 
     setSelectionCoords([x, y])
+  }
+
+  function startGame() {
+    setGameStart(true)
   }
 
   function checkCharacter(name) {
@@ -47,10 +52,14 @@ const App = ()=> {
   function checkWin() {
     if(foundCounter === 5) {
       alert('you won, good job')
-      setSelectionCoords([])
-      setCharacters(charsLevel1)
-      setFoundCounter(0)
+      setGameStart(false)
     }
+  }
+  function resetGame() {
+    setSelectionCoords([])
+    setCharacters(charsLevel1)
+    setFoundCounter(0)
+    setGameStart(true)
   }
   useEffect(() => {
     checkWin()
@@ -58,9 +67,12 @@ const App = ()=> {
 
   return (
     <div className='App'>
-      <StartPrompt />
+      <StartPrompt 
+      startGame={startGame}
+      show={gameStart ? 'none' : 'block'}/>
       <div id='play-area'>
         <Gameboard 
+        show={gameStart ? 'block' : 'none'}
         handleGameboardClick={handleGameboardClick}
         checkCharacter={checkCharacter}
         selectionCoords={selectionCoords}
@@ -74,6 +86,8 @@ const App = ()=> {
             offsetX={selectionCoords[0]}
             offsetY={selectionCoords[1]}/>
       </div>
+      <EndPrompt 
+      show={gameStart ? 'none' : 'block'}/>
     </div>
   )
 }

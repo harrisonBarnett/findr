@@ -8,7 +8,8 @@ const Gameboard = props => {
     return (
         <div 
         id='gameboard'
-        onClick={props.handleGameboardClick}>
+        onClick={props.handleGameboardClick}
+        style={{ display: props.show }}>
             <img src={Image} alt='collage of Futurama characters'></img>
             <SelectionWindow 
             coords={props.selectionCoords}

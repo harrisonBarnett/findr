@@ -1,9 +1,16 @@
 import React from 'react'
-
+import styled from 'styled-components'
 
 const Scorebox = props => {
+    const StyledContainer = styled.div`
+        display: ${props.show};
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: white;
+    `
     return (
-        <div id='scorebox'>
+        <StyledContainer id='scorebox'>
             <p>{props.foundCounter}</p>
             <ul id='character-list'>
                 {props.characters.map(character => {
@@ -14,7 +21,7 @@ const Scorebox = props => {
                     </li>
                 })}
             </ul>
-        </div>
+        </StyledContainer>
     )
 }
 

@@ -1,22 +1,21 @@
 import { useState, useEffect } from 'react'
 import Gameboard from './components/Gameboard'
+import Scorebox from './components/Scorebox'
 import Dropdown from './components/Dropdown'
-import StartPrompt from './components/StartPrompt'
-import EndPrompt from './components/EndPrompt'
-
+import Prompt from './components/Prompt'
 import charsLevel1 from './charsLevel1'
 
 
 import './App.css'
 
 const App = ()=> {
-  const [gameStart, setGameStart] = useState(false)
+  const [gameState, setGameState] = useState('start')
   const [selectionCoords, setSelectionCoords] = useState([])
   const [characters, setCharacters] = useState(charsLevel1)
   const [foundCounter, setFoundCounter] = useState(0)
 
   const handleGameboardClick = (event) => {
-    const parent = document.querySelector('#play-area')
+    const parent = document.querySelector('.App')
     const bounds = parent.getBoundingClientRect()
     const x = event.clientX - bounds.left
     const y = event.clientY - bounds.top
@@ -25,7 +24,7 @@ const App = ()=> {
   }
 
   function startGame() {
-    setGameStart(true)
+    setGameState('play')
   }
 
   function checkCharacter(name) {
@@ -52,14 +51,16 @@ const App = ()=> {
   function checkWin() {
     if(foundCounter === 5) {
       alert('you won, good job')
-      setGameStart(false)
+      setGameState('end')
     }
   }
   function resetGame() {
+    characters.forEach(character => {
+      character.found = false
+    })
     setSelectionCoords([])
-    setCharacters(charsLevel1)
     setFoundCounter(0)
-    setGameStart(true)
+    setGameState('start')
   }
   useEffect(() => {
     checkWin()
@@ -67,27 +68,27 @@ const App = ()=> {
 
   return (
     <div className='App'>
-      <StartPrompt 
+      <Gameboard 
+      show={gameState === 'play' ? 'block' : 'none'}
+      handleGameboardClick={handleGameboardClick}
+      checkCharacter={checkCharacter}
+      selectionCoords={selectionCoords}
+      characters={characters}
+      foundCounter={foundCounter}/>
+      <Dropdown 
+          characters={characters}
+          checkCharacter={checkCharacter}
+          coords={selectionCoords}
+          display={selectionCoords.length === 0 ? 'none' : 'block'}/>
+      <Scorebox 
+      show={gameState === 'play' ? 'block' : 'none'}
+      characters={characters}
+      foundCounter={foundCounter}/>
+      <Prompt 
       startGame={startGame}
-      show={gameStart ? 'none' : 'block'}/>
-      <div id='play-area'>
-        <Gameboard 
-        show={gameStart ? 'block' : 'none'}
-        handleGameboardClick={handleGameboardClick}
-        checkCharacter={checkCharacter}
-        selectionCoords={selectionCoords}
-        characters={characters}
-        foundCounter={foundCounter}/>
-        <Dropdown 
-            characters={characters}
-            checkCharacter={checkCharacter}
-            coords={selectionCoords}
-            display={selectionCoords.length === 0 ? 'none' : 'block'}
-            offsetX={selectionCoords[0]}
-            offsetY={selectionCoords[1]}/>
-      </div>
-      <EndPrompt 
-      show={gameStart ? 'none' : 'block'}/>
+      resetGame={resetGame}
+      show={gameState === 'play' ? 'none' : 'block'}
+      gameState={gameState}/>
     </div>
   )
 }

@@ -1,8 +1,20 @@
 import React from 'react';
+import styled from 'styled-components'
 
 const DropDown = props => {
+    const StyledComponent = styled.div`
+        display: ${props.display};
+        position: absolute;
+        width: fit-content;
+        left: ${props.coords[0]}px;
+        top: ${props.coords[1]}px;
+        z-index: 3;
+        pointer-events: initial;
+        background: rgba(255, 255, 255, .5);
+        border: 1px solid black;
+    `
     return (
-        <div 
+        <StyledComponent 
         id='character-dropdown'
         style={{
             display: props.display,
@@ -20,7 +32,7 @@ const DropDown = props => {
                     </li>
                 })}
             </ul>
-        </div>
+        </StyledComponent>
     );
 };
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components'
 const StyledContainer = styled.div`
+    margin: 0 auto;
     display: grid;
     justify-content: center;
     align-items: center;
-    height: 60px;
-    width: 120px;
-    border-radius: 1em;
+    height: 5vmax;
+    width: 10vmax;
+    border-radius: .5em;
     background: #BA2317;
 `
 const StyledText = styled.p`

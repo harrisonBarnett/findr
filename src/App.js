@@ -97,7 +97,7 @@ const App = ()=> {
           display={selectionCoords.length === 0 ? 'none' : 'block'}/>
       <Scorebox 
       timer={timer}
-      show={gameState === 'play' ? 'block' : 'none'}
+      show={gameState === 'play' ? 'flex' : 'none'}
       characters={characters}
       foundCounter={foundCounter}/>
       <Prompt 

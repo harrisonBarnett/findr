@@ -73,7 +73,7 @@ const App = ()=> {
   }
   // updating timer, checking win condition
   useEffect(() => {
-    if(gameState === 'end') {
+    if(gameState !== 'play') {
       return
     }
     let interval = setInterval(() => setTimer(timer + 1), 1000)

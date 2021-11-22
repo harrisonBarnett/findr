@@ -101,7 +101,8 @@ const App = ()=> {
       characters={characters}
       foundCounter={foundCounter}/>
       <Prompt 
-      timeElapsed={timerEnd - timerStart}
+      // timeElapsed={timerEnd - timerStart}
+      timeElapsed={973}
       startGame={startGame}
       resetGame={resetGame}
       show={gameState === 'play' ? 'none' : 'block'}

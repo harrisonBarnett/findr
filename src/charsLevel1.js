@@ -16,28 +16,28 @@ const charsLevel1 = [
         name: 'That Guy',
         rangeX: [1304, 1328],
         rangeY: [495, 523],
-        found: false,
+        found: true,
         img: thatGuy
     },
     {
         name: "Conan O'Brien",
         rangeX: [829, 858],
         rangeY: [422, 460],
-        found: false,
+        found: true,
         img: conan
     },
     {
         name: 'Slurms McKenzie',
         rangeX: [642, 705],
         rangeY: [436, 487],
-        found: false,
+        found: true,
         img: slurms
     },
     {
         name: 'Judge Whitey',
         rangeX: [1096, 1121],
         rangeY: [655, 682],
-        found: false,
+        found: true,
         img: whitey
     },
 ]

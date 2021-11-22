@@ -6,14 +6,27 @@ const StyledContainer = styled.div`
     border: 1px solid red;
 `
 const End = props => {
-    const [score, setScore] = useState(props.timeElapsed / 1000)
+    const [score, setScore] = useState(props.elapsed)
     const [hours, setHours] = useState('00')
     const [minutes, setMinutes] = useState('00')
     const [seconds, setSeconds] = useState('00')
     const [ms, setMs] = useState('00')
 
     useEffect(() => {
-        //TODO: CONVERT MS TO HOURS, MINUTES, SECONDS, MS
+       let tmpMs = score + ''
+       tmpMs = tmpMs.slice(tmpMs.length - 3, tmpMs.length)
+       let s = parseInt((score /1000 ) % 60)
+       if(s<10){s = '0' + s}
+       let m = parseInt((score / (1000 * 60)) % 60)
+       if(m < 10){m = '0' + m}
+       let h = parseInt((score / (1000 * 60 * 60)) % 60)
+       if(h < 10)(h = '0' + h)
+ 
+       setMs(tmpMs)
+       setSeconds(s)
+       setMinutes(m)
+       setHours(h)
+
     })
     return (
         <StyledContainer 

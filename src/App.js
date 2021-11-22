@@ -12,7 +12,7 @@ const App = ()=> {
   const [gameState, setGameState] = useState('start')
   const [selectionCoords, setSelectionCoords] = useState([])
   const [characters, setCharacters] = useState(charsLevel1)
-  const [foundCounter, setFoundCounter] = useState(0)
+  const [foundCounter, setFoundCounter] = useState(4)
   const [timer, setTimer] = useState(0)
   const [timerStart, setTimerStart] = useState('')
   const [timerEnd, setTimerEnd] = useState('')
@@ -27,8 +27,8 @@ const App = ()=> {
   }
   // start the game
   function startGame() {
-    setGameState('play')
     setTimerStart(Date.now())
+    setGameState('play')
   }
   // check local character array to see if the character has been found yet
   // if not found, then cross-check x/y ranges and mutate array if found
@@ -52,35 +52,30 @@ const App = ()=> {
         setSelectionCoords([])
       }
   }
-  // check the win condition of the game
-  function checkWin() {
-    if(foundCounter === 5) {
-      alert('you won, good job')
-      setTimerEnd(Date.now())
-      setTimer(0)
-      setGameState('end')
-    }
-  }
   // reset the state of the game
   function resetGame() {
-    characters.forEach(character => {
-      character.found = false
-    })
-    setCharacters(characters)
+    setCharacters(charsLevel1)
     setSelectionCoords([])
     setFoundCounter(0)
     setGameState('start')
   }
   // updating timer, checking win condition
   useEffect(() => {
-    if(gameState !== 'play') {
-      return
+    if(gameState === 'play') {
+      let interval = setInterval(() => {
+        setTimer((timer) => timer + 1);
+      }, 1000);
+      return () => clearInterval(interval);
     }
-    let interval = setInterval(() => setTimer(timer + 1), 1000)
-    checkWin()
-    return() => clearInterval(interval)
-  }, [characters, timer, gameState])
-
+  })
+  useEffect(() => {
+    if(foundCounter === 5) {
+      setTimerEnd(Date.now())
+      alert('you won, good job')
+      setTimer(0)
+      setGameState('end')
+    }
+  }, [foundCounter])
   return (
     <div className='App'>
       <Gameboard 
@@ -101,8 +96,7 @@ const App = ()=> {
       characters={characters}
       foundCounter={foundCounter}/>
       <Prompt 
-      // timeElapsed={timerEnd - timerStart}
-      timeElapsed={973}
+      elapsed={timerEnd - timerStart}
       startGame={startGame}
       resetGame={resetGame}
       show={gameState === 'play' ? 'none' : 'block'}

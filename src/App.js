@@ -63,6 +63,7 @@ const App = ()=> {
   // reset the state of the game
   function resetGame() {
     setCharacters(charsLevel1)
+    console.log(charsLevel1)
     setSelectionCoords([])
     setFoundCounter(0)
     setTimer(0)

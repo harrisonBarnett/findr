@@ -16,6 +16,7 @@ const App = ()=> {
   const [timer, setTimer] = useState(0)
   const [timerStart, setTimerStart] = useState('')
   const [timerEnd, setTimerEnd] = useState('')
+  const [elapsed, setElapsed] = useState('')
 
   // handle when a user clicks on a character 
   const handleGameboardClick = (event) => {
@@ -52,11 +53,19 @@ const App = ()=> {
         setSelectionCoords([])
       }
   }
+  function checkWin() {
+    setTimerEnd(Date.now())
+    if(foundCounter === 5) {
+      alert('you won, good job')
+      setGameState('end')
+    }
+  }
   // reset the state of the game
   function resetGame() {
     setCharacters(charsLevel1)
     setSelectionCoords([])
     setFoundCounter(0)
+    setTimer(0)
     setGameState('start')
   }
   // updating timer, checking win condition
@@ -69,12 +78,7 @@ const App = ()=> {
     }
   })
   useEffect(() => {
-    if(foundCounter === 5) {
-      setTimerEnd(Date.now())
-      alert('you won, good job')
-      setTimer(0)
-      setGameState('end')
-    }
+    checkWin()
   }, [foundCounter])
   return (
     <div className='App'>
@@ -93,8 +97,7 @@ const App = ()=> {
       <Scorebox 
       timer={timer}
       show={gameState === 'play' ? 'flex' : 'none'}
-      characters={characters}
-      foundCounter={foundCounter}/>
+      characters={characters}/>
       <Prompt 
       elapsed={timerEnd - timerStart}
       startGame={startGame}

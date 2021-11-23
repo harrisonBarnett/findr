@@ -1,0 +1,2 @@
+body,html{padding:0;margin:0}* a,* h1,* h2,* h3,* li,* p,* ul{text-decoration:none;list-style:none;padding:0;margin:0;font-family:Arial;font-weight:200}@keyframes animate-timer{0%{transform:scale(0)}to{transform:scale(1)}}#timer{transform-origin:0;animation:animate-timer .5s}.scorebox-avi-found{opacity:.5;transform:scale(.8)}
+/*# sourceMappingURL=main.e1571769.chunk.css.map */

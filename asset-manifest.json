@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/findr/static/css/main.e1571769.chunk.css",
+    "main.js": "/findr/static/js/main.c77c6510.chunk.js",
+    "main.js.map": "/findr/static/js/main.c77c6510.chunk.js.map",
+    "runtime-main.js": "/findr/static/js/runtime-main.131e53d9.js",
+    "runtime-main.js.map": "/findr/static/js/runtime-main.131e53d9.js.map",
+    "static/js/2.e79403e1.chunk.js": "/findr/static/js/2.e79403e1.chunk.js",
+    "static/js/2.e79403e1.chunk.js.map": "/findr/static/js/2.e79403e1.chunk.js.map",
+    "index.html": "/findr/index.html",
+    "static/css/main.e1571769.chunk.css.map": "/findr/static/css/main.e1571769.chunk.css.map",
+    "static/js/2.e79403e1.chunk.js.LICENSE.txt": "/findr/static/js/2.e79403e1.chunk.js.LICENSE.txt",
+    "static/media/conan.aecac918.png": "/findr/static/media/conan.aecac918.png",
+    "static/media/futurama-logo.87be2040.png": "/findr/static/media/futurama-logo.87be2040.png",
+    "static/media/futurama.28c70fc7.png": "/findr/static/media/futurama.28c70fc7.png",
+    "static/media/hypnotoad.ab63a8a2.png": "/findr/static/media/hypnotoad.ab63a8a2.png",
+    "static/media/slurms.4b63ac12.png": "/findr/static/media/slurms.4b63ac12.png",
+    "static/media/thatguy.87f57b57.png": "/findr/static/media/thatguy.87f57b57.png",
+    "static/media/whitey.65b56ab4.png": "/findr/static/media/whitey.65b56ab4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.131e53d9.js",
+    "static/js/2.e79403e1.chunk.js",
+    "static/css/main.e1571769.chunk.css",
+    "static/js/main.c77c6510.chunk.js"
+  ]
+}

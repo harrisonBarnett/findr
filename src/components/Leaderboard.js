@@ -48,7 +48,7 @@ const Leaderboard = props => {
     useEffect(() => {
         const getPlayers = async () => {
             const data = await getDocs(playersCollectionRef)
-            setPlayers(data.docs.map((doc)=> ({...doc.data(), id: doc.id})))
+            setPlayers(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
         }
         getPlayers()
     }, [playersCollectionRef])

@@ -13,6 +13,8 @@ html, body {
     list-style: none;
     padding: 0;
     margin: 0;
+    font-family: Arial;
+    font-weight: 200;
 }
 
 @keyframes animate-timer {
@@ -27,3 +29,5 @@ html, body {
     opacity: .5;
     transform: scale(.8);
 }
+
+

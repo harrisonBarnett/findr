@@ -6,31 +6,50 @@ import { collection, getDocs, addDoc } from 'firebase/firestore'
 
 import styled from 'styled-components'
 const StyledContainer = styled.div`
-    border: 1px solid red;
     height: 100%;
 `
 const StyledSubmitContainer = styled.div`
-    position: absolute;
+    padding: 2.5vmax;
+    position: fixed;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-
+    left: 10%;
+    right: 10%;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1em;
+
+    background: #ba2317;
+    border-radius: .5em .5em 0 0;
+    box-shadow: 1px 1px 4px rgba(44, 81, 95, 0.75),
+                -1px -1px 4px rgba(44, 81, 95, .75);
 `
 const StyledPlayerlist = styled.div`
+   padding-bottom: 12vmax;
    height: 100%;
    display: flex;
    flex-direction: column;
    gap: 1em;
 `
 const StyledEntry = styled.div`
-    border: 1px solid black;
-    width: 100%;
-    height: 10%;
+    min-width: 600px;
+    padding: 2.5vmax;
+    margin: 0 auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+
+    font-size: 2.5vmax;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.15);
+    background: #2cd7f1;
+    border-radius: .5em;
+    box-shadow: 1px 1px 4px rgba(44, 81, 95, 0.35),
+    -1px -1px 4px rgba(44, 81, 95, .35);
 `
 
 const Leaderboard = props => {
@@ -43,7 +62,7 @@ const Leaderboard = props => {
     const addPlayer = async () => {
         setNameSubmit(true)
         setNewName('')
-        await addDoc(playersCollectionRef, {name: newName, score: props.score})
+        await addDoc(playersCollectionRef, {name: newName, score: props.score, h: props.h, m: props.m, s: props.s, ms: props.ms})
     }
     useEffect(() => {
         const getPlayers = async () => {
@@ -52,6 +71,9 @@ const Leaderboard = props => {
         }
         getPlayers()
     }, [playersCollectionRef])
+    useEffect(() => {
+        setNameSubmit(false)
+    }, [props.score])
     return (
         <StyledContainer>
             <StyledSubmitContainer>
@@ -60,7 +82,11 @@ const Leaderboard = props => {
                     <input 
                     id='leaderboard-input'
                     value={newName}
-                    onChange={(event) => {setNewName(event.target.value)}}></input>
+                    onChange={(event) => {setNewName(event.target.value)}}
+                    style={{
+                        opacity: nameSubmit ? '.5' : '1',
+                        pointerEvents: nameSubmit ? 'none' : 'all'
+                    }}></input>
                     <button 
                     onClick={addPlayer}
                     style={{
@@ -68,7 +94,6 @@ const Leaderboard = props => {
                         pointerEvents: nameSubmit ? 'none' : 'all'
                     }}>add your score</button>
                 </div>
-                
             </StyledSubmitContainer>
             
             <StyledPlayerlist 
@@ -76,7 +101,7 @@ const Leaderboard = props => {
                 {players.map((player)=> {
                     return <StyledEntry key={player.id}>
                             <p>{player.name}</p>
-                            <p>{player.score}</p>
+                            <p>{player.h}:{player.m}:{player.s}:{player.ms}</p>
                         </StyledEntry>
                 })}
             </StyledPlayerlist>

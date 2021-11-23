@@ -6,16 +6,11 @@ import Prompt from './components/Prompt'
 import charsLevel1 from './charsLevel1'
 import './App.css'
 
-// TODO: 
-// remove timer, it fucking sucks and doesn't add anything
-// style all components
-
 const App = ()=> {
   var characters = charsLevel1
   const [gameState, setGameState] = useState('start')
   const [selectionCoords, setSelectionCoords] = useState([])
-  const [foundCounter, setFoundCounter] = useState(4)
-  const [timer, setTimer] = useState(0)
+  const [foundCounter, setFoundCounter] = useState(0)
   const [timerStart, setTimerStart] = useState('')
   const [timerEnd, setTimerEnd] = useState('')
 
@@ -67,20 +62,10 @@ const App = ()=> {
       character.found = false
     })
     setFoundCounter(0)
-    setTimer(0)
     setTimerStart('')
     setTimerEnd('')
     setGameState('start')
   }
-  // updating timer, checking win condition
-  useEffect(() => {
-    if(gameState === 'play') {
-      let interval = setInterval(() => {
-        setTimer((timer) => timer + 1);
-      }, 1000);
-      return () => clearInterval(interval);
-    } 
-  })
   useEffect(() => {
     checkWin()
   }, [foundCounter])
@@ -99,7 +84,6 @@ const App = ()=> {
           coords={selectionCoords}
           display={selectionCoords.length === 0 ? 'none' : 'block'}/>
       <Scorebox 
-      timer={timer}
       show={gameState === 'play' ? 'flex' : 'none'}
       characters={characters}/>
       <Prompt 

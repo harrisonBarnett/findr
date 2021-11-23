@@ -5,6 +5,7 @@ import End from './End'
 
 import styled from 'styled-components';
 const StyledContainer = styled.div`
+    min-height: 100vh;
     background: #0a8cba;
 `
 const Prompt = ({gameState, show, elapsed, startGame, resetGame}) => {

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-import Timer from './Timer'
 import styled from 'styled-components'
 import Logo from '../static/images/futurama-logo.png'
 
@@ -37,7 +36,7 @@ const CharacterList = styled.div`
     gap: .5em;
 `
 
-const Scorebox = ({timer, show, characters}) => {
+const Scorebox = ({ show, characters}) => {
     const [avis, setAvis] = useState(characters)
 
     useEffect(() => {
@@ -59,8 +58,6 @@ const Scorebox = ({timer, show, characters}) => {
                             </CharacterAvi>
                 })}
             </CharacterList>
-            <Timer timer={timer}/>
-
         </StyledContainer>
     )
 }

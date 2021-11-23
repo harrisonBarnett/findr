@@ -9,7 +9,7 @@ transform: translate(-25px, -25px);
 border-radius: 50%;
 pointer-events: none;
 overflow: unset;
-border: 1px solid red;
+border: 2px solid rgba(255, 0, 0, .5);
 `
 const SelectionWindow = props => {
     return (

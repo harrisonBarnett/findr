@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Leaderboard from './Leaderboard'
 
+
+
 import styled from 'styled-components'
 const StyledContainer = styled.div`
     border: 1px solid red;
@@ -28,7 +30,7 @@ const End = ({gameState, elapsed, resetGame}) => {
             <h3>time elapsed: {score}</h3>
             <h3>{h}:{m}:{s}:{ms}</h3>
             <button onClick={resetGame}>reset</button>
-            <Leaderboard />
+            <Leaderboard score={score}/>
         </StyledContainer>
     );
 };

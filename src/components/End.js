@@ -5,7 +5,12 @@ import Leaderboard from './Leaderboard'
 
 import styled from 'styled-components'
 const StyledContainer = styled.div`
-    border: 1px solid red;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+`
+const StyledTitles = styled.div`
+    text-align: center;
 `
 const End = ({gameState, elapsed, resetGame}) => {
     const [score, setScore] = useState(elapsed)
@@ -25,11 +30,12 @@ const End = ({gameState, elapsed, resetGame}) => {
     return (
         <StyledContainer 
         id='end-prompt'
-        style={{display: gameState === 'end' ? 'block' : 'none'}}>
-            <h2>this is the end prompt</h2>
-            <h3>time elapsed: {score}</h3>
-            <h3>{h}:{m}:{s}:{ms}</h3>
-            <button onClick={resetGame}>reset</button>
+        style={{display: gameState === 'end' ? 'flex' : 'none'}}>
+            <StyledTitles>
+                <h2>Whimmy wham wham wozzle! You finished in {h}:{m}:{s}:{ms}!</h2>
+                <h3>(that's {score} milliseconds!)</h3>
+                <div onClick={resetGame}>click to try and beat your score</div>
+            </StyledTitles>
             <Leaderboard score={score}/>
         </StyledContainer>
     );
